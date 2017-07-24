@@ -1,0 +1,392 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\ELORater.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "idr_main.ico"
+IDI_GRAYPAWN            ICON                    "icon1.ico"
+IDI_CYANPAWN            ICON                    "ico00002.ico"
+IDI_YELLOWPAWN          ICON                    "ico00003.ico"
+IDI_GREENPAWN           ICON                    "ico00004.ico"
+IDI_BLUEPAWN            ICON                    "ico00005.ico"
+IDI_REDPAWN             ICON                    "ico00006.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ELORATER_DIALOG DIALOGEX 0, 0, 273, 294
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "ELO Rater Utility"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "Tab1",IDC_JOBTAB,"SysTabControl32",0x0,7,7,259,280
+END
+
+IDD_ADDPLAYER DIALOGEX 0, 0, 254, 263
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Player Data",IDC_STATIC,7,7,105,230
+    LTEXT           "Name",IDC_STATIC,14,20,20,8
+    LTEXT           "First:",IDC_STATIC,13,37,16,8
+    EDITTEXT        IDC_FIRSTEDIT,34,34,69,15,ES_AUTOHSCROLL
+    LTEXT           "Last",IDC_STATIC,14,58,14,8
+    EDITTEXT        IDC_LASTEDIT,35,56,69,15,ES_AUTOHSCROLL
+    CONTROL         "Default Adult",IDC_RADIO_ADULT,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,15,78,57,10
+    CONTROL         "Default Child",IDC_RADIO_CHILD,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,15,98,56,10
+    COMBOBOX        IDC_AGE,38,116,47,175,CBS_DROPDOWNLIST | WS_VSCROLL | WS_GROUP | WS_TABSTOP
+    CONTROL         "Level",IDC_RADIO_LEVEL,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,14,140,33,10
+    COMBOBOX        IDC_LEVEL,37,157,69,42,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "USCF Rating",IDC_RADIO_RATING,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,14,182,57,10
+    EDITTEXT        IDC_USCF,38,199,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    DEFPUSHBUTTON   "ADD",ID_ADD,7,242,50,14,WS_GROUP
+    PUSHBUTTON      "Clear",ID_CLEAR,65,242,50,14
+    LISTBOX         IDC_PLAYERLIST,120,7,126,249,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_ADDGAME DIALOGEX 0, 0, 254, 261
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Game Data",IDC_STATIC,7,7,239,75
+    LTEXT           "White:",IDC_STATIC,17,20,22,8
+    COMBOBOX        IDC_WHITECOMBO,52,19,89,175,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Black",IDC_STATIC,17,43,19,8
+    COMBOBOX        IDC_BLACKCOMBO,52,40,89,170,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Result:",IDC_STATIC,17,63,23,8
+    COMBOBOX        IDC_RESULTCOMBO,51,61,55,48,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Date:",IDC_STATIC,150,22,18,8
+    CONTROL         "DateTimePicker1",IDC_DATEPICKER,"SysDateTimePick32",DTS_RIGHTALIGN | DTS_UPDOWN | WS_TABSTOP,181,19,55,13
+    LTEXT           "Time",IDC_STATIC,150,43,16,8
+    CONTROL         "DateTimePicker2",IDC_TIMEPICKER,"SysDateTimePick32",DTS_RIGHTALIGN | DTS_UPDOWN | WS_TABSTOP | 0x8,181,40,55,13
+    DEFPUSHBUTTON   "ADD",ID_ADD,126,60,50,14,WS_GROUP
+    PUSHBUTTON      "CLEAR",ID_CLEAR,186,60,50,14
+    LISTBOX         IDC_GAMELIST,7,90,239,164,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_RATINGS DIALOGEX 0, 0, 254, 263
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Sort",IDC_STATIC,197,7,49,40
+    CONTROL         "Name",IDC_RADIONAME,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,203,18,35,10
+    CONTROL         "Rating",IDC_RADIORATING,"Button",BS_AUTORADIOBUTTON,203,31,37,10
+    DEFPUSHBUTTON   "Print",ID_PRINT,197,223,50,14,NOT WS_VISIBLE | WS_GROUP
+    PUSHBUTTON      "Compute",ID_COMPUTE,197,242,50,14,NOT WS_VISIBLE | WS_DISABLED | NOT WS_TABSTOP
+    LISTBOX         IDC_PLAYERS,7,7,182,249,NOT LBS_NOTIFY | LBS_USETABSTOPS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Direction",IDC_STATIC,197,50,49,40
+    CONTROL         "Asc.",IDC_RADIOASC,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,203,61,30,10
+    CONTROL         "Desc.",IDC_RADIODESC,"Button",BS_AUTORADIOBUTTON,203,74,35,10
+END
+
+IDD_ABOUT DIALOGEX 0, 0, 254, 263
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Copyright (C) 2001-2006  by  James Garner",IDC_STATIC,43,31,167,8
+    EDITTEXT        IDC_GPL,15,47,215,119,ES_MULTILINE | ES_READONLY | NOT WS_BORDER,WS_EX_TRANSPARENT
+    CONTROL         132,IDC_STATIC,"Static",SS_BITMAP,15,177,209,79
+    LTEXT           "ELO Rater Version 2.0",IDC_STATIC,44,18,167,8
+END
+
+IDD_ADDCLUB DIALOGEX 0, 0, 254, 263
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Group Data",IDC_STATIC,7,7,105,142
+    LTEXT           "Name",IDC_STATIC,14,20,20,8
+    EDITTEXT        IDC_NAMEEDIT,18,34,85,15,ES_AUTOHSCROLL
+    LTEXT           "Rating System",IDC_STATIC,14,62,46,8
+    CONTROL         "USCF",IDC_RADIO_USCF,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,15,78,35,10
+    CONTROL         "Harkness",IDC_RADIO_HARKNESS,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,15,98,46,10
+    DEFPUSHBUTTON   "ADD",ID_ADD,51,159,50,14,WS_GROUP
+    PUSHBUTTON      "CLEAR",ID_CLEAR,51,180,50,14
+    DEFPUSHBUTTON   "LOAD",ID_LOAD,51,201,50,14,WS_GROUP
+    DEFPUSHBUTTON   "DELETE",ID_DELETE,51,222,50,14,WS_GROUP
+    LISTBOX         IDC_CLUBLIST,120,7,126,249,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "CH DIR",ID_CHANGEDIR,51,243,50,14,WS_GROUP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "FileDescription", "ELO Rater MFC Application"
+            VALUE "FileVersion", "2, 0, 0,0"
+            VALUE "InternalName", "ELO Rater"
+            VALUE "LegalCopyright", "Copyright (C) 2001-2006"
+            VALUE "OriginalFilename", "ELORater.EXE"
+            VALUE "ProductName", "ELO Rater Application"
+            VALUE "ProductVersion", "2, 0, 0,0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ELORATER_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 266
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 287
+    END
+
+    IDD_ADDPLAYER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 246
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 256
+    END
+
+    IDD_ADDGAME, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 246
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 254
+    END
+
+    IDD_RATINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 246
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 256
+    END
+
+    IDD_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 246
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 256
+    END
+
+    IDD_ADDCLUB, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 246
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 256
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_ADDPLAYER DLGINIT
+BEGIN
+    IDC_AGE, 0x403, 2, 0
+0x0034, 
+    IDC_AGE, 0x403, 2, 0
+0x0035, 
+    IDC_AGE, 0x403, 2, 0
+0x0036, 
+    IDC_AGE, 0x403, 2, 0
+0x0037, 
+    IDC_AGE, 0x403, 2, 0
+0x0038, 
+    IDC_AGE, 0x403, 2, 0
+0x0039, 
+    IDC_AGE, 0x403, 3, 0
+0x3031, "\000" 
+    IDC_AGE, 0x403, 3, 0
+0x3131, "\000" 
+    IDC_AGE, 0x403, 3, 0
+0x3231, "\000" 
+    IDC_AGE, 0x403, 3, 0
+0x3331, "\000" 
+    IDC_AGE, 0x403, 3, 0
+0x3431, "\000" 
+    IDC_AGE, 0x403, 3, 0
+0x3531, "\000" 
+    IDC_AGE, 0x403, 3, 0
+0x3631, "\000" 
+    IDC_AGE, 0x403, 3, 0
+0x3731, "\000" 
+    IDC_AGE, 0x403, 3, 0
+0x3831, "\000" 
+    IDC_AGE, 0x403, 3, 0
+0x3931, "\000" 
+    IDC_AGE, 0x403, 3, 0
+0x3032, "\000" 
+    IDC_AGE, 0x403, 4, 0
+0x323e, 0x0030, 
+    IDC_LEVEL, 0x403, 7, 0
+0x654e, 0x6277, 0x6569, "\000" 
+    IDC_LEVEL, 0x403, 9, 0
+0x6542, 0x6967, 0x6e6e, 0x7265, "\000" 
+    IDC_LEVEL, 0x403, 14, 0
+0x6441, 0x2e76, 0x4220, 0x6765, 0x6e69, 0x656e, 0x0072, 
+    IDC_LEVEL, 0x403, 13, 0
+0x6e49, 0x6574, 0x6d72, 0x6465, 0x6169, 0x6574, "\000" 
+    IDC_LEVEL, 0x403, 8, 0
+0x6c43, 0x7361, 0x2073, 0x0041, 
+    IDC_LEVEL, 0x403, 7, 0
+0x7845, 0x6570, 0x7472, "\000" 
+    IDC_LEVEL, 0x403, 13, 0
+0x6143, 0x646e, 0x202e, 0x614d, 0x7473, 0x7265, "\000" 
+    IDC_LEVEL, 0x403, 7, 0
+0x614d, 0x7473, 0x7265, "\000" 
+    0
+END
+
+IDD_ADDGAME DLGINIT
+BEGIN
+    IDC_RESULTCOMBO, 0x403, 10, 0
+0x6857, 0x7469, 0x2065, 0x6f57, 0x006e, 
+    IDC_RESULTCOMBO, 0x403, 5, 0
+0x7244, 0x7761, "\000" 
+    IDC_RESULTCOMBO, 0x403, 10, 0
+0x6c42, 0x6361, 0x206b, 0x6f57, 0x006e, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP                  "whitep.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About ELO Rater..."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\ELORater.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

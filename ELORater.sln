@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ELORater", "ELORater.vcproj", "{49C788C9-2275-4179-9D72-9738E62F5589}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49C788C9-2275-4179-9D72-9738E62F5589}.Debug|Win32.ActiveCfg = Debug|Win32
+		{49C788C9-2275-4179-9D72-9738E62F5589}.Debug|Win32.Build.0 = Debug|Win32
+		{49C788C9-2275-4179-9D72-9738E62F5589}.Release|Win32.ActiveCfg = Release|Win32
+		{49C788C9-2275-4179-9D72-9738E62F5589}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
