@@ -20,6 +20,7 @@
 #define IDI_GREENPAWN                   141
 #define IDI_BLUEPAWN                    142
 #define IDI_REDPAWN                     143
+#define IDI_ICON1                       146
 #define IDC_JOBTAB                      1000
 #define IDC_FIRSTEDIT                   1001
 #define IDC_LASTEDIT                    1002
@@ -37,6 +38,7 @@
 #define ID_PRINT                        1014
 #define IDC_OUTPUTEDIT                  1015
 #define IDC_LEVEL                       1016
+#define ID_CSV                          1016
 #define IDC_RADIONAME                   1017
 #define IDC_RADIORATING                 1018
 #define IDC_COMBO1                      1019
@@ -68,7 +70,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        144
+#define _APS_NEXT_RESOURCE_VALUE        147
 #define _APS_NEXT_COMMAND_VALUE         32771
 #define _APS_NEXT_CONTROL_VALUE         1041
 #define _APS_NEXT_SYMED_VALUE           104

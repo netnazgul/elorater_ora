@@ -18,6 +18,7 @@
     <ProjectGuid>{49C788C9-2275-4179-9D72-9738E62F5589}</ProjectGuid>
     <RootNamespace>ELORater</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <ProjectName>ELORater_ORA</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -112,6 +113,8 @@
     <ResourceCompile Include="ELORater.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ico00001.ico" />
+    <None Include="ora_ico_main.ico" />
     <None Include="res\ELORater.rc2" />
     <None Include="ico00002.ico" />
     <None Include="ico00003.ico" />

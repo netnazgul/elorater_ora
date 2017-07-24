@@ -91,6 +91,12 @@
     <None Include="whitep.bmp">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="ico00001.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ora_ico_main.ico">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AboutDlg.cpp">

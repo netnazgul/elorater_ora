@@ -87,6 +87,7 @@ BEGIN_MESSAGE_MAP(CViewRatingsDlg, CDialog)
 	ON_BN_CLICKED(IDC_RADIOASC, OnChangeDir)
 	ON_BN_CLICKED(IDC_RADIODESC, OnChangeDir)
 	//}}AFX_MSG_MAP
+	ON_BN_CLICKED(ID_CSV, &CViewRatingsDlg::OnCSV)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -282,4 +283,41 @@ void CViewRatingsDlg::OnChangeDir()
 {
 	UpdateData(TRUE);
 	LoadData();
+}
+
+void CViewRatingsDlg::OnCSV()
+{
+	if (m_group)
+	{
+		FILE *fout;
+		CString csvname = m_group->get_name();
+		csvname.Append(".csv");
+		fout = fopen((LPCSTR) csvname,"wt");
+
+		fprintf(fout,"ID;FirstName;LastName;Rating;Games;RatingHighest;Wins;RatingInitial\n");
+
+		POSITION pos = m_group->GetFirstPlayerHandle();
+		while (pos)
+		{
+			CPlayer::SetSort(m_sortBy);
+			CPlayer player = m_group->GetPlayer(pos);
+			CString addThis;
+
+			addThis.Format("%d,%s,%s,%d,%d,%d,%d,%d",	
+				player.get_ID(), 
+				player.get_firstName(), 
+				player.get_lastName(),
+				player.get_rating(),
+				player.get_numGames(),
+				player.get_highest(),
+				player.get_rawScore(),
+				player.get_initial());
+
+			fprintf(fout, "%s\n", addThis);
+
+			pos = m_group->GetNextPlayerHandle(pos);
+		}
+
+		fclose(fout);
+	}
 }

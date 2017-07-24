@@ -94,6 +94,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 	CGroup* m_group;
+public:
+	afx_msg void OnCSV();
 };
 
 //{{AFX_INSERT_LOCATION}}
