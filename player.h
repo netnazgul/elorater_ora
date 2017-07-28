@@ -66,6 +66,7 @@ public:
     long     get_ID(void)                 { return m_ID;              }
     CString& get_firstName(void)          { return m_firstName;       }
     CString& get_lastName(void)           { return m_lastName;        }
+	CString& get_name(void);
     long     get_rating(void)             { return m_rating;          }
     long     get_numGames(void)           { return m_numGames;        }
     long     get_highest(void)            { return m_highest;         }

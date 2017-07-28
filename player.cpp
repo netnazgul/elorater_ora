@@ -131,3 +131,18 @@ bool CPlayer::operator>(const CPlayer &rt) const
 	}
 }
 
+CString& CPlayer::get_name(void)
+{
+	CString playername;
+	if (!m_firstName.GetLength())
+		playername = m_lastName;
+	else if (!m_lastName.GetLength())
+		playername = m_firstName;
+	else
+		playername.Format("%s, %s",
+			m_lastName,
+			m_firstName);
+
+	return playername;
+}
+

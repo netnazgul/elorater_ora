@@ -126,12 +126,9 @@ void CAddGameDlg::LoadGroup(CGroup* group)
 		while (pos)
 		{
 			CPlayer player = m_group->GetPlayer(pos);
-			CString addThis;
-			addThis.Format("%s, %s",
-				player.get_lastName(),
-				player.get_firstName());
-			int wIndex = m_whiteCombo.AddString(addThis);
-			int bIndex = m_blackCombo.AddString(addThis);
+
+			int wIndex = m_whiteCombo.AddString(player.get_name());
+			int bIndex = m_blackCombo.AddString(player.get_name());
 			m_whiteCombo.SetItemDataPtr(wIndex, (void*)pos);
 			m_blackCombo.SetItemDataPtr(bIndex, (void*)pos);
 			pos = m_group->GetNextPlayerHandle(pos);
@@ -157,17 +154,15 @@ void CAddGameDlg::LoadGroup(CGroup* group)
 				default:              resStr = "-Draw"; break;
 				}
 					
-				addThis.Format("%d.%02d.%02d   %02d:%02d      %s      %s, %s vs. %s, %s",
+				addThis.Format("%d.%02d.%02d   %02d:%02d      %s      %s vs. %s",
 					game.get_year(),
 					game.get_month(),
 					game.get_day(),
 					game.get_hour(),
 					game.get_min(),
 					resStr,
-					white.get_lastName(),
-					white.get_firstName(),
-					black.get_lastName(),
-					black.get_firstName());
+					white.get_name(),
+					black.get_name());
 				int gIndex = m_gameList.InsertString(0,addThis);
 				m_gameList.SetItemDataPtr(gIndex, (void*)pos);
 			}
@@ -247,8 +242,6 @@ void CAddGameDlg::OnAdd()
 	CString resultStr;
 	m_resultCombo.GetLBText(m_resultCombo.GetCurSel(),resultStr);
 
-	CString testThis;
-
 	CGame::Result result = CGame::Draw;
     int whiteStart = white.get_rating();
     int blackStart = black.get_rating();
@@ -275,31 +268,42 @@ void CAddGameDlg::OnAdd()
 	default:              resStr = "-Draw"; break;
 	}
 
-	testThis.Format("%d.%02d.%02d   %02d:%02d      %s      %s, %s vs. %s, %s",
-		m_date.GetYear(),
-		m_date.GetMonth(),
-		m_date.GetDay(),
-		m_time.GetHour(),
-		m_time.GetMinute(),
-		resStr,
-		white.get_lastName(),
-		white.get_firstName(),
-		black.get_lastName(),
-		black.get_firstName());
+	bool gameexists;
+	long blackID = black.get_ID(), whiteID = white.get_ID();
+	long year = m_date.GetYear(), month = m_date.GetMonth(), day = m_date.GetDay(), hour = m_time.GetHour(), minute = m_time.GetMinute();
+	POSITION gamepos = m_group->GetFirstGameHandle();
+	while (gamepos)
+	{
+		CGame game = m_group->GetGame(gamepos);
+		
+		if ((blackID == game.get_blackID()) &&
+			(whiteID == game.get_whiteID()) &&
+			 year == game.get_year() && 
+			 month == game.get_month() &&
+			 day == game.get_day() &&
+			 hour == game.get_hour() &&
+			 minute == game.get_min() &&
+			result == game.get_result()
+			)
+		{
+			gameexists = true;
+			break;
+		}
+
+		gamepos = m_group->GetNextGameHandle(gamepos);
+	}
 
 	CString msg;
-	if (m_gameList.FindString(0,testThis) < 0)
+	if (!gameexists)
 	{
 		//no record found... add it
 		msg.Format("Please confirm the entry of the game :\n"
-					"%s, %s vs. %s, %s\n"
+					"%s vs. %s\n"
 					"Date: %d-%d-%d\n"
 					"Time: %02d-%02d.\n"
 					"Press OK to accept or Cancel to abort.",
-					white.get_lastName(),
-					white.get_firstName(),
-					black.get_lastName(),
-					black.get_firstName(),
+					white.get_name(),
+					black.get_name(),
 					m_date.GetYear(),
 					m_date.GetMonth(),
 					m_date.GetDay(),
@@ -318,13 +322,13 @@ void CAddGameDlg::OnAdd()
 
             //add game to group
 			CGame newGame;
-			newGame.set_blackID(black.get_ID());
-			newGame.set_whiteID(white.get_ID());
-			newGame.set_year(m_date.GetYear());
-			newGame.set_month(m_date.GetMonth());
-			newGame.set_day(m_date.GetDay());
-			newGame.set_hour(m_time.GetHour());
-			newGame.set_min(m_time.GetMinute());
+			newGame.set_blackID(blackID);
+			newGame.set_whiteID(whiteID);
+			newGame.set_year(year);
+			newGame.set_month(month);
+			newGame.set_day(day);
+			newGame.set_hour(hour);
+			newGame.set_min(minute);
             newGame.set_whiteStart(whiteStart);
             newGame.set_whiteEnd(white.get_rating());
             newGame.set_blackStart(blackStart);
@@ -346,15 +350,13 @@ void CAddGameDlg::OnAdd()
 	{
 		//record found... can not add it
 		msg.Format("Can not add the game :\n"
-					"%s, %s vs. %s, %s\n"
+					"%s vs. %s\n"
 					"Date: %d-%d-%d\n"
 					"Time: %d-%d\n"
 				    "to the database.\n"
 					"That game already exists in the database.", 
-					black.get_lastName(),
-					black.get_firstName(),
-					white.get_lastName(),
-					white.get_firstName(),
+					black.get_name(),
+					white.get_name(),
 					m_date.GetYear(),
 					m_date.GetMonth(),
 					m_date.GetDay(),
