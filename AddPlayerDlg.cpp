@@ -177,16 +177,38 @@ void CAddPlayerDlg::OnAdd()
 	UpdateData(TRUE);
 	if (m_group)
 	{
-		CString testThis;
-		testThis.Format("%s, %s",
-				m_lastName,
-				m_firstName);
-		if (m_playerList.FindString(0,testThis) > 0)
+
+		bool playerexists;
+		POSITION playerpos = m_group->GetFirstPlayerHandle();
+		while (playerpos)
+		{
+			CPlayer player = m_group->GetPlayer(playerpos);
+		
+			if (m_firstName == player.get_firstName() &&
+				m_lastName == player.get_lastName()
+				)
+			{
+				playerexists = true;
+				break;
+			}
+
+			playerpos = m_group->GetNextPlayerHandle(playerpos);
+		}
+
+		if (!m_lastName.GetLength() && !m_firstName.GetLength())
+		{
+			//cannot add empty name
+			msg.Format("Can not add player to the group.\n"
+				"Name is empty.");
+			MessageBox(msg,"Error", MB_ICONINFORMATION | MB_OK);		
+		}
+		else if (playerexists)
 		{
 			//duplicate entry found... can not add it
 			msg.Format("Can not add %s %s to the group.\n"
 				"That name already exists in the group.", m_firstName, m_lastName);
-			MessageBox(msg,"Error", MB_ICONINFORMATION | MB_OK);		}
+			MessageBox(msg,"Error", MB_ICONINFORMATION | MB_OK);		
+		}
 		else
 		{
 			msg.Format("Please confirm the addition of %s %s\n"

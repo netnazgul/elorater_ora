@@ -133,14 +133,12 @@ void CViewRatingsDlg::LoadData()
 				//sorting by name... list name first
 				if (   (player.get_numGames() < 25) 
 					&& (m_group->get_useHarkness() == false)   )
-					addThis.Format("%s, %s\t%d*",
-						player.get_lastName(),
-						player.get_firstName(),
+					addThis.Format("%s\t%d*",
+						player.get_name(),
 						player.get_rating());
 				else
-					addThis.Format("%s, %s\t%d",
-						player.get_lastName(),
-						player.get_firstName(),
+					addThis.Format("%s\t%d",
+						player.get_name(),
 						player.get_rating());
 			}
 			else
@@ -148,15 +146,13 @@ void CViewRatingsDlg::LoadData()
 				//sorting by rating... list rating first!
 				if (   (player.get_numGames() < 25) 
 					&& (m_group->get_useHarkness() == false)   )
-					addThis.Format("%d*\t%s, %s",
+					addThis.Format("%d*\t%s",
 						player.get_rating(),
-						player.get_lastName(),
-						player.get_firstName());
+						player.get_name());
 				else
-					addThis.Format("%d\t%s, %s",
+					addThis.Format("%d\t%s",
 						player.get_rating(),
-						player.get_lastName(),
-						player.get_firstName());
+						player.get_name());
 			}
 			int count = m_output.GetCount();
 			if (count == 0)
@@ -227,7 +223,7 @@ void CViewRatingsDlg::LoadGroup(CGroup* group)
 		m_sortBy = 1;
 		m_radioAsc.SetCheck(true);
 		m_radioDesc.SetCheck(false);
-		m_ascend = 0;
+		m_ascend = 1;
 		m_radioRating.EnableWindow(true);
 		m_radioName.EnableWindow(true);
 		m_radioAsc.EnableWindow(true);
