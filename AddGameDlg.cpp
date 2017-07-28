@@ -247,8 +247,6 @@ void CAddGameDlg::OnAdd()
 	CString resultStr;
 	m_resultCombo.GetLBText(m_resultCombo.GetCurSel(),resultStr);
 
-	CString testThis;
-
 	CGame::Result result = CGame::Draw;
     int whiteStart = white.get_rating();
     int blackStart = black.get_rating();
@@ -275,20 +273,33 @@ void CAddGameDlg::OnAdd()
 	default:              resStr = "-Draw"; break;
 	}
 
-	testThis.Format("%d.%02d.%02d   %02d:%02d      %s      %s, %s vs. %s, %s",
-		m_date.GetYear(),
-		m_date.GetMonth(),
-		m_date.GetDay(),
-		m_time.GetHour(),
-		m_time.GetMinute(),
-		resStr,
-		white.get_lastName(),
-		white.get_firstName(),
-		black.get_lastName(),
-		black.get_firstName());
+	bool gameexists;
+	long blackID = black.get_ID(), whiteID = white.get_ID();
+	long year = m_date.GetYear(), month = m_date.GetMonth(), day = m_date.GetDay(), hour = m_time.GetHour(), minute = m_time.GetMinute();
+	POSITION gamepos = m_group->GetFirstGameHandle();
+	while (gamepos)
+	{
+		CGame game = m_group->GetGame(gamepos);
+		
+		if ((blackID == game.get_blackID()) &&
+			(whiteID == game.get_whiteID()) &&
+			 year == game.get_year() && 
+			 month == game.get_month() &&
+			 day == game.get_day() &&
+			 hour == game.get_hour() &&
+			 minute == game.get_min() &&
+			result == game.get_result()
+			)
+		{
+			gameexists = true;
+			break;
+		}
+
+		gamepos = m_group->GetNextGameHandle(gamepos);
+	}
 
 	CString msg;
-	if (m_gameList.FindString(0,testThis) < 0)
+	if (!gameexists)
 	{
 		//no record found... add it
 		msg.Format("Please confirm the entry of the game :\n"
@@ -318,13 +329,13 @@ void CAddGameDlg::OnAdd()
 
             //add game to group
 			CGame newGame;
-			newGame.set_blackID(black.get_ID());
-			newGame.set_whiteID(white.get_ID());
-			newGame.set_year(m_date.GetYear());
-			newGame.set_month(m_date.GetMonth());
-			newGame.set_day(m_date.GetDay());
-			newGame.set_hour(m_time.GetHour());
-			newGame.set_min(m_time.GetMinute());
+			newGame.set_blackID(blackID);
+			newGame.set_whiteID(whiteID);
+			newGame.set_year(year);
+			newGame.set_month(month);
+			newGame.set_day(day);
+			newGame.set_hour(hour);
+			newGame.set_min(minute);
             newGame.set_whiteStart(whiteStart);
             newGame.set_whiteEnd(white.get_rating());
             newGame.set_blackStart(blackStart);
