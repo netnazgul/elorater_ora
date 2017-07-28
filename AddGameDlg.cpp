@@ -126,12 +126,9 @@ void CAddGameDlg::LoadGroup(CGroup* group)
 		while (pos)
 		{
 			CPlayer player = m_group->GetPlayer(pos);
-			CString addThis;
-			addThis.Format("%s, %s",
-				player.get_lastName(),
-				player.get_firstName());
-			int wIndex = m_whiteCombo.AddString(addThis);
-			int bIndex = m_blackCombo.AddString(addThis);
+
+			int wIndex = m_whiteCombo.AddString(player.get_name());
+			int bIndex = m_blackCombo.AddString(player.get_name());
 			m_whiteCombo.SetItemDataPtr(wIndex, (void*)pos);
 			m_blackCombo.SetItemDataPtr(bIndex, (void*)pos);
 			pos = m_group->GetNextPlayerHandle(pos);
@@ -157,17 +154,15 @@ void CAddGameDlg::LoadGroup(CGroup* group)
 				default:              resStr = "-Draw"; break;
 				}
 					
-				addThis.Format("%d.%02d.%02d   %02d:%02d      %s      %s, %s vs. %s, %s",
+				addThis.Format("%d.%02d.%02d   %02d:%02d      %s      %s vs. %s",
 					game.get_year(),
 					game.get_month(),
 					game.get_day(),
 					game.get_hour(),
 					game.get_min(),
 					resStr,
-					white.get_lastName(),
-					white.get_firstName(),
-					black.get_lastName(),
-					black.get_firstName());
+					white.get_name(),
+					black.get_name());
 				int gIndex = m_gameList.InsertString(0,addThis);
 				m_gameList.SetItemDataPtr(gIndex, (void*)pos);
 			}
@@ -303,14 +298,12 @@ void CAddGameDlg::OnAdd()
 	{
 		//no record found... add it
 		msg.Format("Please confirm the entry of the game :\n"
-					"%s, %s vs. %s, %s\n"
+					"%s vs. %s\n"
 					"Date: %d-%d-%d\n"
 					"Time: %02d-%02d.\n"
 					"Press OK to accept or Cancel to abort.",
-					white.get_lastName(),
-					white.get_firstName(),
-					black.get_lastName(),
-					black.get_firstName(),
+					white.get_name(),
+					black.get_name(),
 					m_date.GetYear(),
 					m_date.GetMonth(),
 					m_date.GetDay(),
@@ -357,15 +350,13 @@ void CAddGameDlg::OnAdd()
 	{
 		//record found... can not add it
 		msg.Format("Can not add the game :\n"
-					"%s, %s vs. %s, %s\n"
+					"%s vs. %s\n"
 					"Date: %d-%d-%d\n"
 					"Time: %d-%d\n"
 				    "to the database.\n"
 					"That game already exists in the database.", 
-					black.get_lastName(),
-					black.get_firstName(),
-					white.get_lastName(),
-					white.get_firstName(),
+					black.get_name(),
+					white.get_name(),
 					m_date.GetYear(),
 					m_date.GetMonth(),
 					m_date.GetDay(),
